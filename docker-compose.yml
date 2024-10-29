@@ -9,3 +9,7 @@ services:
      - MONGODB_URI=mongodb://USERNAME:PASSWORD@domain-name:27017
      - REDIS_URI=redis://domain-name
      - ENABLE_WRITING_HANDLERS=false
+
+  redis:
+    image: redis:7.2.5
+    container_name: redis
