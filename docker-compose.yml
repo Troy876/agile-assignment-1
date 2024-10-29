@@ -30,6 +30,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=secret
     networks:
       - database
+      - express
 
   mongo-express:
     image: mongo-express:1.0-20-alpine3.19
@@ -39,7 +40,7 @@ services:
       - ME_CONFIG_MONGODB_ADMINPASSWORD=secret
       - ME_CONFIG_MONGODB_SERVER=mongodb
     networks:
-      - database
+      - express
     depends_on:
       - mongodb
 
@@ -50,3 +51,6 @@ networks:
    database:
        external: true
        name: 'database-network'
+   express:
+       external: true
+       name: 'express-network'
