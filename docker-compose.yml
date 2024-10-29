@@ -11,5 +11,12 @@ services:
      - ENABLE_WRITING_HANDLERS=false
 
   redis:
-    image: redis:7.2.5
+    image: redis:alpine
     container_name: redis
+  
+  mongodb:
+    image: mongo:8.0-rc
+    container_name: mongodb
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=secret
