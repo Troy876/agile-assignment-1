@@ -28,6 +28,9 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=secret
+    volumes:
+      - ./data:/data/db
+      - ./seeding.json:/docker-entrypoint-initdb.d/seeding.json
     networks:
       - database
       - express
@@ -54,3 +57,11 @@ networks:
    express:
        external: true
        name: 'express-network'
+volumes:
+  seeding: {}
+
+#Everything but seeding works
+#Need some kind of command? Another container to host data? Would need another network?
+#Previous labs don't seem to be the answer
+#.env exists, should probably use that (finishing touches to names and stuff?)
+#express shuts off due to services not yet ready, find fix (maybe in past labs)
