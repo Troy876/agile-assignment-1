@@ -29,7 +29,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USERNAME}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PASSWORD}
     volumes:
-      - data:/data/db
+      - mongodb-data:/data/db
     networks:
       - database
       - express
@@ -54,7 +54,7 @@ services:
     environment:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGODB_USERNAME}
       - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGODB_PASSWORD}
-      - ME_CONFIG_MONGODB_URL=mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongodb:27017/
+      - ME_CONFIG_MONGODB_URL=mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongodb:27017
     networks:
       - express
     depends_on:
@@ -75,6 +75,6 @@ networks:
        name: 'seeding-network'
 
 volumes:
-  data:
+  mongodb-data:
 
 #Everything but seeding works; figure out production thing, profiles?
