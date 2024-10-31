@@ -29,8 +29,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=secret
     volumes:
-      - ./data:/data/db
-      - ./seeding.json:/docker-entrypoint-initdb.d/seeding.json
+      - data:/data/db
     networks:
       - database
       - express
@@ -75,7 +74,7 @@ networks:
        name: 'seeding-network'
 
 volumes:
-  seeding: {}
+  data:
 
 #Everything but seeding works
 #Need some kind of command? Another container to host data? Would need another network?
