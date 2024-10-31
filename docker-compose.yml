@@ -39,6 +39,10 @@ services:
   mongo-seeding:
     image: mongo:8.0-rc
     container_name: mongo-seeding
+    volumes:
+      - type: bind
+        source: ./seeding.json
+        target: /seeding.json
     networks:
       - seeding
     depends_on:
