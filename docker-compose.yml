@@ -50,6 +50,7 @@ services:
   mongo-express:
     image: mongo-express:1.0-20-alpine3.19
     container_name: mongo-express
+    restart: always
     environment:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGODB_USERNAME}
       - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGODB_PASSWORD}
@@ -77,5 +78,3 @@ volumes:
   data:
 
 #Everything but seeding works; figure out production thing, profiles?
-#Need some kind of command?
-#express shuts off due to services not yet ready, find fix (maybe in past labs)
