@@ -35,6 +35,14 @@ services:
       - database
       - express
 
+  mongo-seeding:
+    image: mongo:8.0-rc
+    container_name: mongo-seeding
+    networks:
+      - seeding
+    depends_on:
+      - mongodb
+
   mongo-express:
     image: mongo-express:1.0-20-alpine3.19
     container_name: mongo-express
