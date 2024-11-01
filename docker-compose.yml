@@ -46,6 +46,8 @@ services:
       - seeding
     depends_on:
       - mongodb
+    command:
+      mongoimport --authenticationDatabase=admin --db tmdb_movies --collection movies --drop --file /seeding.json --jsonArray mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongodb:27017
 
   mongo-express:
     image: mongo-express:1.0-20-alpine3.19
@@ -76,5 +78,3 @@ networks:
 
 volumes:
   mongodb-data:
-
-#Everything but seeding works; figure out production thing, profiles?
