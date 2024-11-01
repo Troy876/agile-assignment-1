@@ -48,6 +48,8 @@ services:
       - mongodb
     command:
       mongoimport --authenticationDatabase=admin --db tmdb_movies --collection movies --drop --file /seeding.json --jsonArray mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongodb:27017
+    profiles:
+      - development-stack
 
   mongo-express:
     image: mongo-express:1.0-20-alpine3.19
@@ -61,6 +63,8 @@ services:
       - express
     depends_on:
       - mongodb
+    profiles:
+      - development-stack
 
 networks:
    api-cache:
